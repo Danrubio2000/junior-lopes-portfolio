@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Junior Lopes - Artista Plástico | Illustrations & Textile Art</title>
+    <title>Junior Lopes - Artista Plástico</title>
     <style>
         * {
             margin: 0;
@@ -12,418 +12,345 @@
         }
 
         body {
-            font-family: 'Georgia', serif;
-            line-height: 1.8;
-            color: #1a1a1a;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
             background: #ffffff;
         }
 
         /* NAVBAR */
         nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(10, 22, 40, 0.95);
+            background: #ffffff;
             padding: 1.5rem 5%;
+            border-bottom: 3px solid #000;
+            position: sticky;
+            top: 0;
+            z-index: 100;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
         }
 
         nav .logo {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: bold;
-            color: #FFD700;
-            letter-spacing: 2px;
+            color: #000;
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 2.5rem;
+            gap: 2rem;
         }
 
         nav a {
-            color: #ffffff;
+            color: #000;
             text-decoration: none;
-            font-size: 0.95rem;
-            transition: color 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-weight: 600;
+            border-bottom: 2px solid transparent;
+            transition: border 0.3s;
         }
 
         nav a:hover {
-            color: #FFD700;
+            border-bottom: 2px solid #000;
         }
 
-        /* HERO SECTION */
+        /* HERO */
         .hero {
-            margin-top: 80px;
-            background: linear-gradient(135deg, #0a1628 0%, #1a2f4d 100%);
-            color: #ffffff;
-            padding: 8rem 5% 6rem;
+            background: #f5f5f5;
+            padding: 6rem 5%;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
+            border-bottom: 3px solid #000;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             margin-bottom: 1rem;
-            font-weight: normal;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
-
-        .hero .subtitle {
-            font-size: 1.8rem;
-            color: #FFD700;
-            font-style: italic;
-            margin-bottom: 2rem;
-            font-weight: 300;
+            color: #000;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            color: #e0e0e0;
-            line-height: 1.8;
+            font-size: 1.3rem;
+            color: #555;
+            margin-bottom: 2rem;
         }
 
-        .cta-button {
-            display: inline-block;
-            background: #FFD700;
-            color: #0a1628;
-            padding: 1rem 3rem;
-            border: none;
-            font-size: 1.1rem;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: bold;
-            transition: all 0.3s;
+        .hero .btn {
+            background: #000;
+            color: #fff;
+            padding: 1rem 2rem;
             text-decoration: none;
-            margin-top: 1rem;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
         }
 
-        .cta-button:hover {
-            background: #ffffff;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        .hero .btn:hover {
+            background: #333;
         }
 
-        /* ABOUT SECTION */
-        .about {
-            padding: 6rem 5%;
+        /* SEÇÕES */
+        section {
+            padding: 4rem 5%;
             max-width: 1200px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
         }
 
-        .about-text h2 {
+        section h2 {
             font-size: 2.5rem;
             margin-bottom: 2rem;
-            color: #0a1628;
-            letter-spacing: 2px;
+            color: #000;
+            border-bottom: 3px solid #000;
+            padding-bottom: 1rem;
         }
 
-        .about-text p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            color: #333;
-            line-height: 1.9;
-        }
-
-        .about-image {
-            width: 100%;
-            height: 400px;
-            background: linear-gradient(135deg, #0a1628 0%, #1a2f4d 100%);
-            border-radius: 2px;
-            overflow: hidden;
-        }
-
-        .about-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* ABOUT IMAGE GALLERY - Vertical Rectangle */
-        .about-image-gallery {
+        /* SOBRE */
+        .sobre-container {
             display: grid;
-            grid-template-columns: 1fr;
-            grid-template-rows: 1fr 0.8fr;
-            gap: 1rem;
-            width: 100%;
-            height: 600px;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
         }
 
-        .about-image-main {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #0a1628 0%, #1a2f4d 100%);
-            border: 2px solid #FFD700;
-            border-radius: 2px;
-            overflow: hidden;
+        .sobre-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #000;
+            font-weight: bold;
         }
 
-        .about-image-main img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .sobre-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+            color: #555;
+            font-size: 1rem;
         }
 
-        .about-image-secondary {
-            width: 100%;
-            height: 100%;
-            background: #f0f0f0;
-            border: 2px solid #FFD700;
-            border-radius: 2px;
-            overflow: hidden;
+        .sobre-images {
+            display: grid;
+            grid-template-rows: 1fr 0.7fr;
+            gap: 1.5rem;
         }
 
-        .about-image-secondary img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* HIGHLIGHTS */
-        .highlights {
+        .stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
-            margin-top: 3rem;
+            margin-top: 2rem;
         }
 
-        .highlight-box {
+        .stat-item {
             background: #f5f5f5;
             padding: 2rem;
-            border-left: 4px solid #FFD700;
-        }
-
-        .highlight-box h3 {
-            color: #FFD700;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 1.1rem;
-        }
-
-        .highlight-box p {
-            font-size: 0.95rem;
-            color: #555;
-            line-height: 1.7;
-        }
-
-        /* EXPOSITIONS */
-        .expositions {
-            background: #f9f9f9;
-            padding: 6rem 5%;
-        }
-
-        .section-title {
+            border: 3px solid #000;
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 4rem;
-            color: #0a1628;
-            letter-spacing: 2px;
-            text-transform: uppercase;
         }
 
-        .expositions-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 3rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .exposition-card {
-            background: #ffffff;
-            padding: 2rem;
-            border-bottom: 3px solid #FFD700;
-            transition: all 0.3s;
-        }
-
-        .exposition-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .exposition-card h3 {
-            color: #0a1628;
+        .stat-item h4 {
+            font-size: 1.5rem;
+            color: #000;
             margin-bottom: 0.5rem;
-            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
         }
 
-        .exposition-card .year {
-            color: #FFD700;
-            font-weight: bold;
-            margin-bottom: 1rem;
+        .stat-circle {
+            width: 15px;
+            height: 15px;
+            background: #FFD700;
+            border-radius: 50%;
+            flex-shrink: 0;
         }
 
-        .exposition-card p {
+        .stat-item p {
             color: #666;
             font-size: 0.95rem;
         }
 
-        /* AWARDS */
-        .awards {
-            padding: 6rem 5%;
-            background: linear-gradient(135deg, #0a1628 0%, #1a2f4d 100%);
-            color: #ffffff;
+        .image-box {
+            border: 3px solid #000;
+            overflow: hidden;
+            background: #f5f5f5;
         }
 
-        .awards .section-title {
-            color: #FFD700;
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
-        .awards-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+        .image-box.main {
+            height: 400px;
         }
 
-        .award-item {
-            background: rgba(255, 215, 0, 0.1);
-            padding: 2rem;
-            border-left: 3px solid #FFD700;
-            border-radius: 2px;
+        .image-box.secondary {
+            height: 500px;
         }
 
-        .award-item h4 {
-            color: #FFD700;
-            margin-bottom: 0.5rem;
-            font-size: 1rem;
-            text-transform: uppercase;
+        .image-box.secondary img {
+            object-fit: contain;
+            object-position: center;
         }
 
-        .award-item p {
-            color: #e0e0e0;
-            font-size: 0.95rem;
-            line-height: 1.6;
+        /* EXPOSIÇÕES */
+        .exposicoes {
+            background: #fafafa;
         }
 
-        /* AWARDS GALLERY IMAGES */
-        .award-images-gallery {
+        .exposicoes-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
-            max-width: 1200px;
-            margin: 3rem auto 0;
-            padding: 2rem 0 0;
-            border-top: 1px solid rgba(255, 215, 0, 0.3);
         }
 
-        .award-image-item {
-            width: 100%;
-            height: 300px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid #FFD700;
-            border-radius: 2px;
-            overflow: hidden;
-            transition: all 0.3s;
+        .expo-card {
+            background: #fff;
+            padding: 2rem;
+            border: 3px solid #000;
+            border-radius: 0;
         }
 
-        .award-image-item:hover {
-            transform: scale(1.02);
-            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+        .expo-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #000;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
         }
 
-        .award-image-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .expo-circle {
+            width: 15px;
+            height: 15px;
+            background: #FFD700;
+            border-radius: 50%;
+            flex-shrink: 0;
         }
 
-        /* PORTFOLIO */
-        .portfolio {
-            padding: 6rem 5%;
+        .expo-card .year {
+            color: #000;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .expo-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* PREMIAÇÕES */
+        .premiacoes {
             background: #ffffff;
         }
 
-        .portfolio-grid {
+        .premiacoes-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: 1fr;
             gap: 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
         }
 
-        .portfolio-item {
-            aspect-ratio: 1;
-            background: #f0f0f0;
-            border: 2px solid #FFD700;
+        .premios-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .premio-item {
+            background: #f5f5f5;
+            padding: 2rem;
+            border-left: 4px solid #000;
+        }
+
+        .premio-item h3 {
+            color: #000;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .premio-circle {
+            width: 20px;
+            height: 20px;
+            background: #FFD700;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .premio-item p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .levis-showcase {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .levis-image {
+            border: 3px solid #000;
             overflow: hidden;
+            background: #f5f5f5;
+            height: 400px;
+        }
+
+        .levis-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            padding: 1rem;
+        }
+
+        /* GALERIA */
+        .galeria {
+            background: #fafafa;
+        }
+
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .galeria-item {
+            border: 3px solid #000;
+            overflow: hidden;
+            aspect-ratio: 1;
             cursor: pointer;
-            transition: all 0.3s;
-            position: relative;
+            transition: transform 0.3s;
+            background: #f5f5f5;
         }
 
-        .portfolio-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        .galeria-item:hover {
+            transform: scale(1.02);
         }
 
-        .portfolio-item img {
+        .galeria-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }
-
-        .portfolio-item::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(10, 22, 40, 0.7);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .portfolio-item:hover::after {
-            opacity: 1;
+            display: block;
         }
 
         /* FOOTER */
         footer {
-            background: #0a1628;
-            color: #ffffff;
-            padding: 4rem 5%;
+            background: #000;
+            color: #fff;
+            padding: 3rem 5%;
             text-align: center;
+            border-top: 3px solid #000;
         }
 
         footer h3 {
             font-size: 1.5rem;
             margin-bottom: 1.5rem;
-            letter-spacing: 2px;
         }
 
         .social-links {
@@ -434,86 +361,46 @@
         }
 
         .social-links a {
-            color: #FFD700;
+            color: #fff;
             text-decoration: none;
             font-weight: bold;
-            transition: color 0.3s;
+            transition: 0.3s;
         }
 
         .social-links a:hover {
-            color: #ffffff;
+            color: #ccc;
         }
 
         footer p {
-            color: #999;
-            font-size: 0.95rem;
+            color: #aaa;
+            font-size: 0.9rem;
         }
 
-        /* RESPONSIVE */
+        /* RESPONSIVO */
         @media (max-width: 768px) {
+            .sobre {
+                grid-template-columns: 1fr;
+            }
+
+            .premiacoes-container {
+                grid-template-columns: 1fr;
+            }
+
+            .exposicoes-grid {
+                grid-template-columns: 1fr;
+            }
+
             nav ul {
-                gap: 1.5rem;
-                font-size: 0.85rem;
+                gap: 1rem;
             }
 
             .hero h1 {
                 font-size: 2rem;
             }
 
-            .hero .subtitle {
-                font-size: 1.3rem;
-            }
-
-            .about {
-                grid-template-columns: 1fr;
-            }
-
-            .highlights {
-                grid-template-columns: 1fr;
-            }
-
-            .expositions-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .awards-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .portfolio-grid {
+            .galeria-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-
-            .about-text h2 {
-                font-size: 1.8rem;
-            }
-        }
-
-        /* ANIMATIONS */
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .about-text,
-        .exposition-card,
-        .award-item,
-        .portfolio-item {
-            animation: slideInUp 0.6s ease-out forwards;
-        }
-
-        .exposition-card {
-            animation-delay: 0.1s;
-        }
-
-        .award-item {
-            animation-delay: 0.15s;
         }
     </style>
 </head>
@@ -522,168 +409,189 @@
     <nav>
         <div class="logo">JUNIOR LOPES</div>
         <ul>
-            <li><a href="#about">Sobre</a></li>
-            <li><a href="#expositions">Exposições</a></li>
-            <li><a href="#awards">Prêmios</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#contact">Contato</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#exposicoes">Exposições</a></li>
+            <li><a href="#premiacoes">Prêmios</a></li>
+            <li><a href="#galeria">Galeria</a></li>
+            <li><a href="#contato">Contato</a></li>
         </ul>
     </nav>
 
     <!-- HERO -->
     <section class="hero">
-        <div class="hero-content">
-            <h1>Junior Lopes</h1>
-            <p class="subtitle">Artista Plástico Contemporâneo</p>
-            <p>Tecido como linguagem. Retalhos como memória.<br>
-            Colagens que dialogam com a cultura de massa através da sustentabilidade e crítica.</p>
-            <button class="cta-button">Explorar Trabalhos</button>
+        <h1>JUNIOR LOPES</h1>
+        <p>Artista Plástico Contemporâneo</p>
+        <p style="font-size: 1rem; color: #666; margin-bottom: 2rem;">Tecido como linguagem • Retalhos como memória</p>
+        <button class="btn">Explorar Obras</button>
+    </section>
+
+    <!-- SOBRE -->
+    <section id="sobre">
+        <h2>Sobre o Artista</h2>
+
+        <!-- GRID: TEXTO ESQUERDA + FOTOS DIREITA -->
+        <div class="sobre-container">
+            <!-- TEXTO ESQUERDA -->
+            <div class="sobre-text">
+                <h3>Junior Lopes</h3>
+                <p><strong>Uma voz única na arte contemporânea amazônica.</strong> Junior Lopes é artista plástico nascido no Pará que transformou a cena artística paulista e internacional. Há mais de 15 anos, ele domina uma técnica revolucionária que poucos conseguem replicar: a ilustração gráfica feita exclusivamente com retalhos de tecidos reciclados.</p>
+
+                <p>Sua obra não é apenas visual — é um manifesto. Cada costura, cada sobreposição, cada recorte carrega uma mensagem contra o desperdício contemporâneo e uma celebração da criatividade amazônica no diálogo global. Enquanto o mundo inteiro cria, Junior questiona. Enquanto outros descartam, ele transforma.</p>
+
+                <p>O denim em suas mãos ganha nova vida — carrega histórias de uso, memórias de quem o vestiu. Os tecidos estampados explodem em exuberância tropical. A paleta não é pigmento ou tinta. É pura matéria bruta: tecido, resistência, consciência.</p>
+
+                <p>Premiado em Cannes, publicado pela Taschen entre os 150 melhores ilustradores do mundo, circulando por continentes — Junior prova que a inovação verdadeira vem da periferia e que a arte feita com propósito muda o diálogo cultural global.</p>
+            </div>
+
+            <!-- FOTOS DIREITA -->
+            <div class="sobre-images">
+                <div class="image-box" style="height: 400px;">
+                    <img src="images/IMAGENS/Junior Lopes image.jpeg" alt="Junior Lopes - Artista Plástico">
+                </div>
+                <div class="image-box" style="height: 240px;">
+                    <img src="images/IMAGENS/rolling stone 1.jpeg" alt="Rolling Stone - Reconhecimento Internacional">
+                </div>
+            </div>
+        </div>
+
+        <!-- STATS EMBAIXO (horizontal) - FORMANDO QUADRADO -->
+        <div class="stats">
+            <div class="stat-item">
+                <h4><span class="stat-circle"></span>15 Anos+</h4>
+                <p>De inovação contínua em técnica de ilustração gráfica com tecidos reciclados • Pioneirismo reconhecido globalmente</p>
+            </div>
+            <div class="stat-item">
+                <h4><span class="stat-circle"></span>150 Ilustradores</h4>
+                <p>Publicado no "Illustration Now!" Taschen 2015 • Entre os melhores do mundo pela maior editora de arte contemporânea</p>
+            </div>
+            <div class="stat-item">
+                <h4><span class="stat-circle"></span>Leão de Ouro</h4>
+                <p>Cannes 2004 • Maior prêmio publicitário mundial por Campanha Levi's "Cut for you" • Reconhecimento artístico supremo</p>
+            </div>
         </div>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="about">
-        <div class="about-text">
-            <h2>Sobre o Artista</h2>
-            <p>
-                Junior Lopes é artista plástico paraense que reside em São Paulo.
-                Há mais de 15 anos desenvolve uma técnica inovadora e pioneira de ilustração gráfica,
-                confeccionando seus trabalhos com retalhos de tecidos reciclados.
-            </p>
-            <p>
-                Seu trabalho questiona o desperdício contemporâneo e reafirma o valor da criatividade amazônica
-                no diálogo global das artes contemporâneas. Cada peça é um exercício de síntese visual:
-                recorte, sobreposição, costura. Sem tintas, sem pigmentos — apenas tecido,
-                o material bruto da transformação.
-            </p>
-            <p>
-                O denim carrega histórias de uso. Os tecidos estampados trazem a exuberância tropical.
-                Juntos, conversam sobre memória, consumo e resistência.
-            </p>
-
-            <div class="highlights">
-                <div class="highlight-box">
-                    <h3>15+ Anos</h3>
-                    <p>De trajetória em técnica de ilustração gráfica com tecidos reciclados</p>
-                </div>
-                <div class="highlight-box">
-                    <h3>150 Ilustradores</h3>
-                    <p>Publicado no livro "Illustration Now!" - Taschen (2015)</p>
-                </div>
-                <div class="highlight-box">
-                    <h3>Leão de Ouro</h3>
-                    <p>Cannes 2004 - Campanha Levi's "Cut for you"</p>
-                </div>
-            </div>
-        </div>
-        <div class="about-image-gallery">
-            <div class="about-image-main">
-                <img src="images/IMAGENS/Junior Lopes image.jpeg" alt="Junior Lopes - Artista Plástico">
-            </div>
-            <div class="about-image-secondary">
-                <img src="images/IMAGENS/rolling stone 1.jpeg" alt="Rolling Stone">
-            </div>
-        </div>
-    </section>
-
-    <!-- EXPOSITIONS -->
-    <section id="expositions" class="expositions">
-        <h2 class="section-title">Exposições Internacionais</h2>
-        <div class="expositions-grid">
-            <div class="exposition-card">
-                <h3>Terruá Pará</h3>
+    <!-- EXPOSIÇÕES -->
+    <section id="exposicoes" class="exposicoes">
+        <h2>Exposições Internacionais</h2>
+        <div class="exposicoes-grid">
+            <div class="expo-card">
+                <h3><span class="expo-circle"></span>Terruá Pará</h3>
                 <p class="year">2013 | São Paulo</p>
-                <p>Exposição no Auditório Ibirapuera (SP)</p>
+                <p>Exposição no Auditório Ibirapuera (SP) • Apresentação do projeto que revolucionou o arte textil contemporânea.</p>
             </div>
-            <div class="exposition-card">
-                <h3>Terruá Pará</h3>
+            <div class="expo-card">
+                <h3><span class="expo-circle"></span>Terruá Pará</h3>
                 <p class="year">2014 | Belém</p>
-                <p>Instituto de Arte do Pará (IAP)</p>
+                <p>Instituto de Arte do Pará (IAP) • Celebração da criatividade amazônica contemporânea em sua origem.</p>
             </div>
-            <div class="exposition-card">
-                <h3>Mostra Internac. Gráfica</h3>
+            <div class="expo-card">
+                <h3><span class="expo-circle"></span>Mostra Internacional Gráfica</h3>
                 <p class="year">2015 | Revista Gráfica</p>
-                <p>Artista homenageado com capa + 48 páginas internas</p>
+                <p>Artista homenageado com capa + 48 páginas internas • Reconhecimento global na edição especializada.</p>
             </div>
-            <div class="exposition-card">
-                <h3>Circuito Nacional</h3>
+            <div class="expo-card">
+                <h3><span class="expo-circle"></span>Circuito Nacional</h3>
                 <p class="year">Contínuo</p>
-                <p>São Paulo, Belém, Piracicaba, Porto Alegre, Espanha, Moçambique</p>
+                <p>São Paulo, Belém, Piracicaba, Porto Alegre, Espanha, Moçambique • Presença internacional consolidada.</p>
             </div>
         </div>
     </section>
 
-    <!-- AWARDS -->
-    <section id="awards" class="awards">
-        <h2 class="section-title">Premiações</h2>
-        <div class="awards-grid">
-            <div class="award-item">
-                <h4>Leão de Ouro</h4>
-                <p>Cannes 2004 - Ilustrações Campanha Levi's "Cut for you"</p>
+    <!-- PREMIAÇÕES -->
+    <section id="premiacoes" class="premiacoes">
+        <h2>Premiações & Reconhecimento</h2>
+        <div class="premiacoes-container">
+            <!-- PRÊMIOS EM HORIZONTAL -->
+            <div class="premios-list">
+                <div class="premio-item">
+                    <h3><span class="premio-circle"></span>Leão de Ouro</h3>
+                    <p>Cannes 2004 - Ilustrações Campanha Levi's "Cut for you" • Maior prêmio publicitário mundial</p>
+                </div>
+                <div class="premio-item">
+                    <h3><span class="premio-circle"></span>Taschen</h3>
+                    <p>Illustration Now! 2015 - Publicado entre os 150 melhores ilustradores do mundo pela editora alemã Taschen</p>
+                </div>
+                <div class="premio-item">
+                    <h3><span class="premio-circle"></span>Circuito Global</h3>
+                    <p>Piracicaba, Santos, Pernambuco, Turquia, China, Marostica 2016 • Premiações em salões internacionais de humor e arte</p>
+                </div>
             </div>
-            <div class="award-item">
-                <h4>Prêmio Internacional</h4>
-                <p>Salão Internacional de Humor de Piracicaba, Salão Carioca de Humor</p>
-            </div>
-            <div class="award-item">
-                <h4>Circuito Global</h4>
-                <p>Volta Redonda, Santos, FIQH-Pernambuco, Turquia, China, Marostica 2016</p>
-            </div>
-        </div>
 
-        <!-- LEVIS CAMPAIGN SHOWCASE -->
-        <div class="award-images-gallery">
-            <div class="award-image-item">
-                <img src="images/IMAGENS/levis-11.jpeg" alt="Campanha Levi's - Obra 11">
-            </div>
-            <div class="award-image-item">
-                <img src="images/IMAGENS/levis-12.jpeg" alt="Campanha Levi's - Obra 12">
+            <!-- FOTOS EMBAIXO COMPLETAS -->
+            <div class="levis-showcase">
+                <div class="levis-image">
+                    <img src="images/reorganized/obra_13.jpeg" alt="Obra 13 - Campanha Levi's">
+                </div>
+                <div class="levis-image">
+                    <img src="images/IMAGENS/levis-12.jpeg" alt="Campanha Levi's 12">
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- PORTFOLIO -->
-    <section id="portfolio" class="portfolio">
-        <h2 class="section-title">Portfolio</h2>
-        <div class="portfolio-grid">
-            <!-- Campanha Levi's - Cannes 2004 -->
-            <div class="portfolio-item">
-                <img src="images/IMAGENS/levis-11.jpeg" alt="Campanha Levi's - Obra 11">
+    <!-- GALERIA -->
+    <section id="galeria" class="galeria">
+        <h2>Galeria</h2>
+        <div class="galeria-grid">
+            <div class="galeria-item">
+                <img src="images/reorganized/obra_1.jpeg" alt="Obra 1">
             </div>
-            <div class="portfolio-item">
-                <img src="images/IMAGENS/levis-12.jpeg" alt="Campanha Levi's - Obra 12">
+            <div class="galeria-item">
+                <img src="images/reorganized/obra_2.jpeg" alt="Obra 2">
             </div>
-            <div class="portfolio-item">
-                <img src="https://via.placeholder.com/300x300?text=Obra+3" alt="Obra 3">
+            <div class="galeria-item">
+                <img src="images/reorganized/obra_3.jpeg" alt="Obra 3">
             </div>
-            <div class="portfolio-item">
-                <img src="https://via.placeholder.com/300x300?text=Obra+4" alt="Obra 4">
+            <div class="galeria-item">
+                <img src="images/reorganized/obra_4.jpeg" alt="Obra 4">
             </div>
-            <div class="portfolio-item">
-                <img src="https://via.placeholder.com/300x300?text=Obra+5" alt="Obra 5">
+            <div class="galeria-item">
+                <img src="images/reorganized/obra_5.jpeg" alt="Obra 5">
             </div>
-            <div class="portfolio-item">
-                <img src="https://via.placeholder.com/300x300?text=Obra+6" alt="Obra 6">
+            <div class="galeria-item">
+                <img src="images/reorganized/obra_6.jpeg" alt="Obra 6">
             </div>
-            <div class="portfolio-item">
-                <img src="https://via.placeholder.com/300x300?text=Obra+7" alt="Obra 7">
+            <div class="galeria-item">
+                <img src="images/reorganized/obra_7.jpeg" alt="Obra 7">
             </div>
-            <div class="portfolio-item">
-                <img src="https://via.placeholder.com/300x300?text=Obra+8" alt="Obra 8">
+            <div class="galeria-item">
+                <img src="images/reorganized/obra_8.jpeg" alt="Obra 8">
+            </div>
+            <div class="galeria-item">
+                <img src="images/reorganized/obra_9.jpeg" alt="Obra 9">
+            </div>
+            <div class="galeria-item">
+                <img src="images/reorganized/obra_10.jpeg" alt="Obra 10">
+            </div>
+            <div class="galeria-item">
+                <img src="images/reorganized/obra_11.jpeg" alt="Obra 11">
+            </div>
+            <div class="galeria-item">
+                <img src="images/reorganized/obra_12.jpeg" alt="Obra 12">
+            </div>
+            <div class="galeria-item">
+                <img src="images/reorganized/obra_13.jpeg" alt="Obra 13">
+            </div>
+            <div class="galeria-item">
+                <img src="images/reorganized/obra_14.jpeg" alt="Obra 14">
+            </div>
+            <div class="galeria-item">
+                <img src="images/reorganized/obra_15.jpeg" alt="Obra 15">
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer id="contact">
+    <footer id="contato">
         <h3>Conecte-se</h3>
         <div class="social-links">
-            <a href="https://instagram.com" target="_blank">Instagram</a>
-            <a href="https://facebook.com" target="_blank">Facebook</a>
-            <a href="mailto:contato@juniorlopes.art">Email</a>
+            <a href="mailto:danielrubiodocs@gmail.com">✉️ Email</a>
+            <a href="tel:+13474308188">📞 Telefone</a>
+            <a href="https://wa.me/5511994494532">💬 WhatsApp</a>
         </div>
-        <p>&copy; 2024 Junior Lopes - Artista Plástico. Todos os direitos reservados.</p>
-        <p>Soho NY | Taschen | Cannes | Pará</p>
+        <p>&copy; 2024 Junior Lopes - Artista Plástico • Todos os direitos reservados</p>
+        <p style="margin-top: 1rem;">DANIEL A. RUBIO / JUNIOR LOPES / ARTVER</p>
     </footer>
 </body>
 </html>
