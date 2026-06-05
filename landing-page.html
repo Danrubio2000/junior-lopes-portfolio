@@ -19,25 +19,69 @@
             background: #ffffff;
         }
 
+        /* NAVBAR */
+        nav {
+            background: #ffffff;
+            padding: 0.8rem 5%;
+            border-bottom: 1.5px solid #000;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex: 1;
+        }
+
+        .nav-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .qr-navbar {
+            border: 1.5px solid #000;
+            padding: 0.3rem;
+            background: #fff;
+        }
+
+        .qr-navbar canvas {
+            display: block;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 0.2rem;
+            border: 1.5px solid #000;
+            padding: 0.2rem;
+            flex-shrink: 0;
+        }
+
         /* LANGUAGE SWITCHER */
         .lang-switcher {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: #fff;
-            border: 3px solid #000;
-            padding: 0.5rem;
             display: flex;
-            gap: 0.5rem;
+            gap: 0.3rem;
+            background: transparent;
+            border: none;
+            padding: 0;
         }
 
         .lang-btn {
-            padding: 0.5rem 1rem;
+            padding: 0.4rem 0.8rem;
             background: transparent;
-            border: 2px solid #000;
+            border: 1px solid #000;
             cursor: pointer;
             font-weight: bold;
+            font-size: 0.85rem;
             transition: all 0.3s;
         }
 
@@ -46,29 +90,19 @@
             color: #fff;
         }
 
-        /* NAVBAR */
-        nav {
-            background: #ffffff;
-            padding: 1.5rem 5%;
-            border-bottom: 3px solid #000;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
         nav .logo {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: bold;
             color: #000;
+            white-space: nowrap;
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 1.5rem;
+            margin: 0;
+            padding: 0;
         }
 
         nav a {
@@ -88,7 +122,7 @@
             background: #f5f5f5;
             padding: 6rem 5%;
             text-align: center;
-            border-bottom: 3px solid #000;
+            border-bottom: 1.5px solid #000;
         }
 
         .hero h1 {
@@ -129,7 +163,7 @@
             font-size: 2.5rem;
             margin-bottom: 2rem;
             color: #000;
-            border-bottom: 3px solid #000;
+            border-bottom: 1.5px solid #000;
             padding-bottom: 1rem;
         }
 
@@ -162,7 +196,7 @@
         }
 
         .image-box {
-            border: 3px solid #000;
+            border: 1.5px solid #000;
             overflow: hidden;
             background: #f5f5f5;
         }
@@ -187,30 +221,6 @@
             object-position: center;
         }
 
-        /* QR CODE */
-        .qr-container {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .qr-item {
-            text-align: center;
-            border: 3px solid #000;
-            padding: 2rem;
-            background: #f5f5f5;
-        }
-
-        .qr-item h4 {
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-            color: #000;
-        }
-
-        .qr-code {
-            margin: 0 auto;
-        }
 
         /* STATS */
         .stats {
@@ -223,7 +233,7 @@
         .stat-item {
             background: #f5f5f5;
             padding: 2rem;
-            border: 3px solid #000;
+            border: 1.5px solid #000;
             text-align: center;
         }
 
@@ -264,7 +274,7 @@
         .expo-card {
             background: #fff;
             padding: 2rem;
-            border: 3px solid #000;
+            border: 1.5px solid #000;
             border-radius: 0;
         }
 
@@ -349,7 +359,7 @@
         }
 
         .levis-image {
-            border: 3px solid #000;
+            border: 1.5px solid #000;
             overflow: hidden;
             background: #f5f5f5;
             height: 400px;
@@ -375,7 +385,7 @@
         }
 
         .galeria-item {
-            border: 3px solid #000;
+            border: 1.5px solid #000;
             overflow: hidden;
             aspect-ratio: 1;
             cursor: pointer;
@@ -400,7 +410,7 @@
             color: #fff;
             padding: 3rem 5%;
             text-align: center;
-            border-top: 3px solid #000;
+            border-top: 1.5px solid #000;
         }
 
         footer h3 {
@@ -468,24 +478,32 @@
     </style>
 </head>
 <body>
-    <!-- LANGUAGE SWITCHER -->
-    <div class="lang-switcher">
-        <button class="lang-btn active" data-lang="pt">PT</button>
-        <button class="lang-btn" data-lang="en">EN</button>
-        <button class="lang-btn" data-lang="es">ES</button>
-        <button class="lang-btn" data-lang="fr">FR</button>
-    </div>
-
     <!-- NAVBAR -->
     <nav>
-        <div class="logo">JUNIOR LOPES</div>
-        <ul>
-            <li><a href="#sobre" class="nav-sobre">Sobre</a></li>
-            <li><a href="#exposicoes" class="nav-exposicoes">Exposições</a></li>
-            <li><a href="#premiacoes" class="nav-premiacoes">Prêmios</a></li>
-            <li><a href="#galeria" class="nav-galeria">Galeria</a></li>
-            <li><a href="#contato" class="nav-contato">Contato</a></li>
-        </ul>
+        <!-- LEFT: LOGO + MENU -->
+        <div class="nav-left">
+            <div class="logo">JUNIOR LOPES</div>
+            <ul>
+                <li><a href="#sobre" class="nav-sobre">Sobre</a></li>
+                <li><a href="#exposicoes" class="nav-exposicoes">Exposições</a></li>
+                <li><a href="#premiacoes" class="nav-premiacoes">Prêmios</a></li>
+                <li><a href="#galeria" class="nav-galeria">Galeria</a></li>
+                <li><a href="#contato" class="nav-contato">Contato</a></li>
+            </ul>
+        </div>
+
+        <!-- CENTER: QR CODE -->
+        <div class="nav-center">
+            <div class="qr-navbar" id="qr-main"></div>
+        </div>
+
+        <!-- RIGHT: LANGUAGE SWITCHER -->
+        <div class="nav-right">
+            <button class="lang-btn active" data-lang="pt">PT</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="es">ES</button>
+            <button class="lang-btn" data-lang="fr">FR</button>
+        </div>
     </nav>
 
     <!-- HERO -->
@@ -521,26 +539,6 @@
                 <div class="image-box secondary">
                     <img src="images/IMAGENS/rolling stone 1.jpeg" alt="Rolling Stone - Reconhecimento Internacional">
                 </div>
-            </div>
-        </div>
-
-        <!-- QR CODES -->
-        <div class="qr-container">
-            <div class="qr-item">
-                <h4>🇧🇷 Português</h4>
-                <div class="qr-code" id="qr-pt"></div>
-            </div>
-            <div class="qr-item">
-                <h4>🇺🇸 English</h4>
-                <div class="qr-code" id="qr-en"></div>
-            </div>
-            <div class="qr-item">
-                <h4>🇪🇸 Español</h4>
-                <div class="qr-code" id="qr-es"></div>
-            </div>
-            <div class="qr-item">
-                <h4>🇫🇷 Français</h4>
-                <div class="qr-code" id="qr-fr"></div>
             </div>
         </div>
 
@@ -858,22 +856,12 @@
 
         function generateQRCodes() {
             const baseUrl = window.location.origin + window.location.pathname;
-            const urls = {
-                pt: baseUrl.replace('landing-page.html', 'landing-page.html?lang=pt'),
-                en: baseUrl.replace('landing-page.html', 'landing-page.html?lang=en'),
-                es: baseUrl.replace('landing-page.html', 'landing-page.html?lang=es'),
-                fr: baseUrl.replace('landing-page.html', 'landing-page.html?lang=fr')
-            };
 
-            // Clear previous QR codes
-            ['qr-pt', 'qr-en', 'qr-es', 'qr-fr'].forEach(id => {
-                document.getElementById(id).innerHTML = '';
-            });
+            // Clear previous QR code
+            document.getElementById('qr-main').innerHTML = '';
 
-            new QRCode(document.getElementById('qr-pt'), { text: urls.pt, width: 150, height: 150 });
-            new QRCode(document.getElementById('qr-en'), { text: urls.en, width: 150, height: 150 });
-            new QRCode(document.getElementById('qr-es'), { text: urls.es, width: 150, height: 150 });
-            new QRCode(document.getElementById('qr-fr'), { text: urls.fr, width: 150, height: 150 });
+            // Generate QR code pointing to the landing page
+            new QRCode(document.getElementById('qr-main'), { text: baseUrl, width: 100, height: 100 });
         }
 
         // Language switcher
