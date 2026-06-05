@@ -120,9 +120,19 @@
         /* HERO */
         .hero {
             background: #f5f5f5;
-            padding: 6rem 5%;
-            text-align: center;
+            padding: 0;
             border-bottom: 1.5px solid #000;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 600px;
+        }
+
+        .hero-content {
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
         }
 
         .hero h1 {
@@ -132,9 +142,10 @@
         }
 
         .hero p {
-            font-size: 1.3rem;
+            font-size: 1rem;
             color: #555;
             margin-bottom: 2rem;
+            line-height: 1.6;
         }
 
         .hero .btn {
@@ -146,10 +157,23 @@
             border: none;
             cursor: pointer;
             transition: 0.3s;
+            align-self: flex-start;
         }
 
         .hero .btn:hover {
             background: #333;
+        }
+
+        .hero-image {
+            border-left: 1.5px solid #000;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         /* SEÇÕES */
@@ -508,10 +532,15 @@
 
     <!-- HERO -->
     <section class="hero">
-        <h1 class="hero-title">JUNIOR LOPES</h1>
-        <p class="hero-subtitle">Artista Plástico Contemporâneo</p>
-        <p class="hero-desc" style="font-size: 1rem; color: #666; margin-bottom: 2rem;">Tecido como linguagem • Retalhos como memória</p>
-        <button class="btn hero-btn">Explorar Obras</button>
+        <div class="hero-content">
+            <h1 class="hero-title">JUNIOR LOPES</h1>
+            <p class="hero-subtitle">Artista Plástico Contemporâneo</p>
+            <p class="hero-desc">Tecido como linguagem • Retalhos como memória</p>
+            <button class="btn hero-btn">Explorar Obras</button>
+        </div>
+        <div class="hero-image">
+            <img src="images/reorganized/obra_13.jpeg" alt="Junior Lopes - Campanha Levi's">
+        </div>
     </section>
 
     <!-- SOBRE -->
