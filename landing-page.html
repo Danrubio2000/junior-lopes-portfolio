@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Junior Lopes - Artista Plástico</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -16,6 +17,33 @@
             line-height: 1.6;
             color: #333;
             background: #ffffff;
+        }
+
+        /* LANGUAGE SWITCHER */
+        .lang-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: #fff;
+            border: 3px solid #000;
+            padding: 0.5rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .lang-btn {
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 2px solid #000;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .lang-btn.active {
+            background: #000;
+            color: #fff;
         }
 
         /* NAVBAR */
@@ -133,42 +161,6 @@
             gap: 1.5rem;
         }
 
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .stat-item {
-            background: #f5f5f5;
-            padding: 2rem;
-            border: 3px solid #000;
-            text-align: center;
-        }
-
-        .stat-item h4 {
-            font-size: 1.5rem;
-            color: #000;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .stat-circle {
-            width: 15px;
-            height: 15px;
-            background: #FFD700;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        .stat-item p {
-            color: #666;
-            font-size: 0.95rem;
-        }
-
         .image-box {
             border: 3px solid #000;
             overflow: hidden;
@@ -193,6 +185,69 @@
         .image-box.secondary img {
             object-fit: contain;
             object-position: center;
+        }
+
+        /* QR CODE */
+        .qr-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .qr-item {
+            text-align: center;
+            border: 3px solid #000;
+            padding: 2rem;
+            background: #f5f5f5;
+        }
+
+        .qr-item h4 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            color: #000;
+        }
+
+        .qr-code {
+            margin: 0 auto;
+        }
+
+        /* STATS */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            background: #f5f5f5;
+            padding: 2rem;
+            border: 3px solid #000;
+            text-align: center;
+        }
+
+        .stat-item h4 {
+            font-size: 1.5rem;
+            color: #000;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+        }
+
+        .stat-circle {
+            width: 15px;
+            height: 15px;
+            background: #FFD700;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .stat-item p {
+            color: #666;
+            font-size: 0.95rem;
         }
 
         /* EXPOSIÇÕES */
@@ -376,9 +431,13 @@
             font-size: 0.9rem;
         }
 
+        .hidden {
+            display: none;
+        }
+
         /* RESPONSIVO */
         @media (max-width: 768px) {
-            .sobre {
+            .sobre-container {
                 grid-template-columns: 1fr;
             }
 
@@ -401,124 +460,153 @@
             .galeria-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .qr-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
 <body>
+    <!-- LANGUAGE SWITCHER -->
+    <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="pt">PT</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="es">ES</button>
+        <button class="lang-btn" data-lang="fr">FR</button>
+    </div>
+
     <!-- NAVBAR -->
     <nav>
         <div class="logo">JUNIOR LOPES</div>
         <ul>
-            <li><a href="#sobre">Sobre</a></li>
-            <li><a href="#exposicoes">Exposições</a></li>
-            <li><a href="#premiacoes">Prêmios</a></li>
-            <li><a href="#galeria">Galeria</a></li>
-            <li><a href="#contato">Contato</a></li>
+            <li><a href="#sobre" class="nav-sobre">Sobre</a></li>
+            <li><a href="#exposicoes" class="nav-exposicoes">Exposições</a></li>
+            <li><a href="#premiacoes" class="nav-premiacoes">Prêmios</a></li>
+            <li><a href="#galeria" class="nav-galeria">Galeria</a></li>
+            <li><a href="#contato" class="nav-contato">Contato</a></li>
         </ul>
     </nav>
 
     <!-- HERO -->
     <section class="hero">
-        <h1>JUNIOR LOPES</h1>
-        <p>Artista Plástico Contemporâneo</p>
-        <p style="font-size: 1rem; color: #666; margin-bottom: 2rem;">Tecido como linguagem • Retalhos como memória</p>
-        <button class="btn">Explorar Obras</button>
+        <h1 class="hero-title">JUNIOR LOPES</h1>
+        <p class="hero-subtitle">Artista Plástico Contemporâneo</p>
+        <p class="hero-desc" style="font-size: 1rem; color: #666; margin-bottom: 2rem;">Tecido como linguagem • Retalhos como memória</p>
+        <button class="btn hero-btn">Explorar Obras</button>
     </section>
 
     <!-- SOBRE -->
     <section id="sobre">
-        <h2>Sobre o Artista</h2>
+        <h2 class="section-title-sobre">Sobre o Artista</h2>
 
-        <!-- GRID: TEXTO ESQUERDA + FOTOS DIREITA -->
         <div class="sobre-container">
             <!-- TEXTO ESQUERDA -->
             <div class="sobre-text">
-                <h3>Junior Lopes</h3>
-                <p><strong>Uma voz única na arte contemporânea amazônica.</strong> Junior Lopes é artista plástico nascido no Pará que transformou a cena artística paulista e internacional. Há mais de 15 anos, ele domina uma técnica revolucionária que poucos conseguem replicar: a ilustração gráfica feita exclusivamente com retalhos de tecidos reciclados.</p>
+                <h3 class="artist-name">Junior Lopes</h3>
+                <p class="about-p1">Junior Lopes é artista plástico nascido no Pará e estabelecido em São Paulo. Há mais de 15 anos, ele desenvolveu e domina uma técnica que poucos conseguem replicar: a ilustração gráfica feita exclusivamente com retalhos de tecidos reciclados da indústria da moda e do vestuário.</p>
 
-                <p>Sua obra não é apenas visual — é um manifesto. Cada costura, cada sobreposição, cada recorte carrega uma mensagem contra o desperdício contemporâneo e uma celebração da criatividade amazônica no diálogo global. Enquanto o mundo inteiro cria, Junior questiona. Enquanto outros descartam, ele transforma.</p>
+                <p class="about-p2">Sua obra não é apenas visual — é um manifesto. Cada colagem, cada sobreposição, cada recorte comunica uma questão sobre o desperdício contemporâneo e reafirma a criatividade amazônica no diálogo das artes globais. Enquanto muitos criam, Junior questiona. Enquanto outros descartam, ele transforma.</p>
 
-                <p>O denim em suas mãos ganha nova vida — carrega histórias de uso, memórias de quem o vestiu. Os tecidos estampados explodem em exuberância tropical. A paleta não é pigmento ou tinta. É pura matéria bruta: tecido, resistência, consciência.</p>
+                <p class="about-p3">O denim em suas mãos ganha nova vida — traz histórias de uso e memórias de quem o vestiu. Os tecidos estampados respiram exuberância tropical. Sua paleta não é pigmento ou tinta, mas matéria bruta: tecido, durabilidade e consciência.</p>
 
-                <p>Premiado em Cannes, publicado pela Taschen entre os 150 melhores ilustradores do mundo, circulando por continentes — Junior prova que a inovação verdadeira vem da periferia e que a arte feita com propósito muda o diálogo cultural global.</p>
+                <p class="about-p4">Reconhecido em Cannes, publicado pela Taschen entre os 150 melhores ilustradores do mundo, circulando por continentes — Junior demonstra que a inovação verdadeira surge da periferia e que a arte feita com propósito transforma o diálogo cultural.</p>
             </div>
 
             <!-- FOTOS DIREITA -->
             <div class="sobre-images">
-                <div class="image-box" style="height: 400px;">
+                <div class="image-box main">
                     <img src="images/IMAGENS/Junior Lopes image.jpeg" alt="Junior Lopes - Artista Plástico">
                 </div>
-                <div class="image-box" style="height: 240px;">
+                <div class="image-box secondary">
                     <img src="images/IMAGENS/rolling stone 1.jpeg" alt="Rolling Stone - Reconhecimento Internacional">
                 </div>
             </div>
         </div>
 
-        <!-- STATS EMBAIXO (horizontal) - FORMANDO QUADRADO -->
+        <!-- QR CODES -->
+        <div class="qr-container">
+            <div class="qr-item">
+                <h4>🇧🇷 Português</h4>
+                <div class="qr-code" id="qr-pt"></div>
+            </div>
+            <div class="qr-item">
+                <h4>🇺🇸 English</h4>
+                <div class="qr-code" id="qr-en"></div>
+            </div>
+            <div class="qr-item">
+                <h4>🇪🇸 Español</h4>
+                <div class="qr-code" id="qr-es"></div>
+            </div>
+            <div class="qr-item">
+                <h4>🇫🇷 Français</h4>
+                <div class="qr-code" id="qr-fr"></div>
+            </div>
+        </div>
+
+        <!-- STATS -->
         <div class="stats">
             <div class="stat-item">
-                <h4><span class="stat-circle"></span>15 Anos+</h4>
-                <p>De inovação contínua em técnica de ilustração gráfica com tecidos reciclados • Pioneirismo reconhecido globalmente</p>
+                <h4><span class="stat-circle"></span><span class="stat-label-1">15 Anos+</span></h4>
+                <p class="stat-desc-1">De inovação contínua em técnica de ilustração gráfica com tecidos reciclados</p>
             </div>
             <div class="stat-item">
-                <h4><span class="stat-circle"></span>150 Ilustradores</h4>
-                <p>Publicado no "Illustration Now!" Taschen 2015 • Entre os melhores do mundo pela maior editora de arte contemporânea</p>
+                <h4><span class="stat-circle"></span><span class="stat-label-2">150 Ilustradores</span></h4>
+                <p class="stat-desc-2">Publicado no "Illustration Now!" Taschen 2015 • Entre os melhores do mundo</p>
             </div>
             <div class="stat-item">
-                <h4><span class="stat-circle"></span>Leão de Ouro</h4>
-                <p>Cannes 2004 • Maior prêmio publicitário mundial por Campanha Levi's "Cut for you" • Reconhecimento artístico supremo</p>
+                <h4><span class="stat-circle"></span><span class="stat-label-3">Leão de Ouro</span></h4>
+                <p class="stat-desc-3">Cannes 2004 • Maior prêmio publicitário mundial pela Campanha Levi's</p>
             </div>
         </div>
     </section>
 
     <!-- EXPOSIÇÕES -->
     <section id="exposicoes" class="exposicoes">
-        <h2>Exposições Internacionais</h2>
+        <h2 class="section-title-exposicoes">Exposições Internacionais</h2>
         <div class="exposicoes-grid">
             <div class="expo-card">
-                <h3><span class="expo-circle"></span>Terruá Pará</h3>
-                <p class="year">2013 | São Paulo</p>
-                <p>Exposição no Auditório Ibirapuera (SP) • Apresentação do projeto que revolucionou o arte textil contemporânea.</p>
+                <h3><span class="expo-circle"></span><span class="expo-title-1">Terruá Pará</span></h3>
+                <p class="expo-year-1">2013 | São Paulo</p>
+                <p class="expo-desc-1">Exposição no Auditório Ibirapuera apresentando técnica inovadora em arte têxtil contemporânea.</p>
             </div>
             <div class="expo-card">
-                <h3><span class="expo-circle"></span>Terruá Pará</h3>
-                <p class="year">2014 | Belém</p>
-                <p>Instituto de Arte do Pará (IAP) • Celebração da criatividade amazônica contemporânea em sua origem.</p>
+                <h3><span class="expo-circle"></span><span class="expo-title-2">Terruá Pará</span></h3>
+                <p class="expo-year-2">2014 | Belém</p>
+                <p class="expo-desc-2">Instituto de Arte do Pará celebrando a criatividade amazônica contemporânea em sua origem.</p>
             </div>
             <div class="expo-card">
-                <h3><span class="expo-circle"></span>Mostra Internacional Gráfica</h3>
-                <p class="year">2015 | Revista Gráfica</p>
-                <p>Artista homenageado com capa + 48 páginas internas • Reconhecimento global na edição especializada.</p>
+                <h3><span class="expo-circle"></span><span class="expo-title-3">Mostra Internacional</span></h3>
+                <p class="expo-year-3">2015 | Revista Gráfica</p>
+                <p class="expo-desc-3">Artista homenageado com capa e reconhecimento global na edição especializada.</p>
             </div>
             <div class="expo-card">
-                <h3><span class="expo-circle"></span>Circuito Nacional</h3>
-                <p class="year">Contínuo</p>
-                <p>São Paulo, Belém, Piracicaba, Porto Alegre, Espanha, Moçambique • Presença internacional consolidada.</p>
+                <h3><span class="expo-circle"></span><span class="expo-title-4">Circuito Nacional</span></h3>
+                <p class="expo-year-4">Contínuo</p>
+                <p class="expo-desc-4">São Paulo, Belém, Piracicaba, Porto Alegre, Espanha, Moçambique e além.</p>
             </div>
         </div>
     </section>
 
     <!-- PREMIAÇÕES -->
     <section id="premiacoes" class="premiacoes">
-        <h2>Premiações & Reconhecimento</h2>
+        <h2 class="section-title-premiacoes">Premiações & Reconhecimento</h2>
         <div class="premiacoes-container">
-            <!-- PRÊMIOS EM HORIZONTAL -->
             <div class="premios-list">
                 <div class="premio-item">
-                    <h3><span class="premio-circle"></span>Leão de Ouro</h3>
-                    <p>Cannes 2004 - Ilustrações Campanha Levi's "Cut for you" • Maior prêmio publicitário mundial</p>
+                    <h3><span class="premio-circle"></span><span class="premio-label-1">Leão de Ouro</span></h3>
+                    <p class="premio-desc-1">Cannes 2004 pela Campanha Levi's "Cut for you" • Maior prêmio publicitário mundial</p>
                 </div>
                 <div class="premio-item">
-                    <h3><span class="premio-circle"></span>Taschen</h3>
-                    <p>Illustration Now! 2015 - Publicado entre os 150 melhores ilustradores do mundo pela editora alemã Taschen</p>
+                    <h3><span class="premio-circle"></span><span class="premio-label-2">Taschen</span></h3>
+                    <p class="premio-desc-2">Illustration Now! 2015 • Entre os 150 melhores ilustradores do mundo</p>
                 </div>
                 <div class="premio-item">
-                    <h3><span class="premio-circle"></span>Circuito Global</h3>
-                    <p>Piracicaba, Santos, Pernambuco, Turquia, China, Marostica 2016 • Premiações em salões internacionais de humor e arte</p>
+                    <h3><span class="premio-circle"></span><span class="premio-label-3">Circuito Global</span></h3>
+                    <p class="premio-desc-3">Piracicaba, Santos, Pernambuco, Turquia, China, Marostica 2016</p>
                 </div>
             </div>
 
-            <!-- FOTOS EMBAIXO COMPLETAS -->
             <div class="levis-showcase">
                 <div class="levis-image">
                     <img src="images/reorganized/obra_13.jpeg" alt="Obra 13 - Campanha Levi's">
@@ -532,66 +620,281 @@
 
     <!-- GALERIA -->
     <section id="galeria" class="galeria">
-        <h2>Galeria</h2>
+        <h2 class="section-title-galeria">Galeria</h2>
         <div class="galeria-grid">
-            <div class="galeria-item">
-                <img src="images/reorganized/obra_1.jpeg" alt="Obra 1">
-            </div>
-            <div class="galeria-item">
-                <img src="images/reorganized/obra_2.jpeg" alt="Obra 2">
-            </div>
-            <div class="galeria-item">
-                <img src="images/reorganized/obra_3.jpeg" alt="Obra 3">
-            </div>
-            <div class="galeria-item">
-                <img src="images/reorganized/obra_4.jpeg" alt="Obra 4">
-            </div>
-            <div class="galeria-item">
-                <img src="images/reorganized/obra_5.jpeg" alt="Obra 5">
-            </div>
-            <div class="galeria-item">
-                <img src="images/reorganized/obra_6.jpeg" alt="Obra 6">
-            </div>
-            <div class="galeria-item">
-                <img src="images/reorganized/obra_7.jpeg" alt="Obra 7">
-            </div>
-            <div class="galeria-item">
-                <img src="images/reorganized/obra_8.jpeg" alt="Obra 8">
-            </div>
-            <div class="galeria-item">
-                <img src="images/reorganized/obra_9.jpeg" alt="Obra 9">
-            </div>
-            <div class="galeria-item">
-                <img src="images/reorganized/obra_10.jpeg" alt="Obra 10">
-            </div>
-            <div class="galeria-item">
-                <img src="images/reorganized/obra_11.jpeg" alt="Obra 11">
-            </div>
-            <div class="galeria-item">
-                <img src="images/reorganized/obra_12.jpeg" alt="Obra 12">
-            </div>
-            <div class="galeria-item">
-                <img src="images/reorganized/obra_13.jpeg" alt="Obra 13">
-            </div>
-            <div class="galeria-item">
-                <img src="images/reorganized/obra_14.jpeg" alt="Obra 14">
-            </div>
-            <div class="galeria-item">
-                <img src="images/reorganized/obra_15.jpeg" alt="Obra 15">
-            </div>
+            <div class="galeria-item"><img src="images/reorganized/obra_1.jpeg" alt="Obra 1"></div>
+            <div class="galeria-item"><img src="images/reorganized/obra_2.jpeg" alt="Obra 2"></div>
+            <div class="galeria-item"><img src="images/reorganized/obra_3.jpeg" alt="Obra 3"></div>
+            <div class="galeria-item"><img src="images/reorganized/obra_4.jpeg" alt="Obra 4"></div>
+            <div class="galeria-item"><img src="images/reorganized/obra_5.jpeg" alt="Obra 5"></div>
+            <div class="galeria-item"><img src="images/reorganized/obra_6.jpeg" alt="Obra 6"></div>
+            <div class="galeria-item"><img src="images/reorganized/obra_7.jpeg" alt="Obra 7"></div>
+            <div class="galeria-item"><img src="images/reorganized/obra_8.jpeg" alt="Obra 8"></div>
+            <div class="galeria-item"><img src="images/reorganized/obra_9.jpeg" alt="Obra 9"></div>
+            <div class="galeria-item"><img src="images/reorganized/obra_10.jpeg" alt="Obra 10"></div>
+            <div class="galeria-item"><img src="images/reorganized/obra_11.jpeg" alt="Obra 11"></div>
+            <div class="galeria-item"><img src="images/reorganized/obra_12.jpeg" alt="Obra 12"></div>
+            <div class="galeria-item"><img src="images/reorganized/obra_13.jpeg" alt="Obra 13"></div>
+            <div class="galeria-item"><img src="images/reorganized/obra_14.jpeg" alt="Obra 14"></div>
+            <div class="galeria-item"><img src="images/reorganized/obra_15.jpeg" alt="Obra 15"></div>
         </div>
     </section>
 
     <!-- FOOTER -->
     <footer id="contato">
-        <h3>Conecte-se</h3>
+        <h3 class="footer-title">Conecte-se</h3>
         <div class="social-links">
             <a href="mailto:danielrubiodocs@gmail.com">✉️ Email</a>
             <a href="tel:+13474308188">📞 Telefone</a>
             <a href="https://wa.me/5511994494532">💬 WhatsApp</a>
         </div>
-        <p>&copy; 2024 Junior Lopes - Artista Plástico • Todos os direitos reservados</p>
-        <p style="margin-top: 1rem;">DANIEL A. RUBIO / JUNIOR LOPES / ARTVER</p>
+        <p class="footer-copyright">&copy; 2024 Junior Lopes - Artista Plástico • Todos os direitos reservados</p>
+        <p class="footer-credits" style="margin-top: 1rem;">DANIEL A. RUBIO / JUNIOR LOPES / ARTVER</p>
     </footer>
+
+    <script>
+        // MULTILINGUAL DATA
+        const translations = {
+            pt: {
+                nav: { sobre: 'Sobre', exposicoes: 'Exposições', premiacoes: 'Prêmios', galeria: 'Galeria', contato: 'Contato' },
+                hero: { title: 'JUNIOR LOPES', subtitle: 'Artista Plástico Contemporâneo', desc: 'Tecido como linguagem • Retalhos como memória', btn: 'Explorar Obras' },
+                about: {
+                    title: 'Sobre o Artista',
+                    name: 'Junior Lopes',
+                    p1: 'Junior Lopes é artista plástico nascido no Pará e estabelecido em São Paulo. Há mais de 15 anos, ele desenvolveu e domina uma técnica que poucos conseguem replicar: a ilustração gráfica feita exclusivamente com retalhos de tecidos reciclados da indústria da moda e do vestuário.',
+                    p2: 'Sua obra não é apenas visual — é um manifesto. Cada colagem, cada sobreposição, cada recorte comunica uma questão sobre o desperdício contemporâneo e reafirma a criatividade amazônica no diálogo das artes globais. Enquanto muitos criam, Junior questiona. Enquanto outros descartam, ele transforma.',
+                    p3: 'O denim em suas mãos ganha nova vida — traz histórias de uso e memórias de quem o vestiu. Os tecidos estampados respiram exuberância tropical. Sua paleta não é pigmento ou tinta, mas matéria bruta: tecido, durabilidade e consciência.',
+                    p4: 'Reconhecido em Cannes, publicado pela Taschen entre os 150 melhores ilustradores do mundo, circulando por continentes — Junior demonstra que a inovação verdadeira surge da periferia e que a arte feita com propósito transforma o diálogo cultural.'
+                },
+                stats: {
+                    label1: '15 Anos+', desc1: 'De inovação contínua em técnica de ilustração gráfica com tecidos reciclados',
+                    label2: '150 Ilustradores', desc2: 'Publicado no "Illustration Now!" Taschen 2015 • Entre os melhores do mundo',
+                    label3: 'Leão de Ouro', desc3: 'Cannes 2004 • Maior prêmio publicitário mundial pela Campanha Levi\'s'
+                },
+                expo: {
+                    title: 'Exposições Internacionais',
+                    title1: 'Terruá Pará', year1: '2013 | São Paulo', desc1: 'Exposição no Auditório Ibirapuera apresentando técnica inovadora em arte têxtil contemporânea.',
+                    title2: 'Terruá Pará', year2: '2014 | Belém', desc2: 'Instituto de Arte do Pará celebrando a criatividade amazônica contemporânea em sua origem.',
+                    title3: 'Mostra Internacional', year3: '2015 | Revista Gráfica', desc3: 'Artista homenageado com capa e reconhecimento global na edição especializada.',
+                    title4: 'Circuito Nacional', year4: 'Contínuo', desc4: 'São Paulo, Belém, Piracicaba, Porto Alegre, Espanha, Moçambique e além.'
+                },
+                premios: {
+                    title: 'Premiações & Reconhecimento',
+                    label1: 'Leão de Ouro', desc1: 'Cannes 2004 pela Campanha Levi\'s "Cut for you" • Maior prêmio publicitário mundial',
+                    label2: 'Taschen', desc2: 'Illustration Now! 2015 • Entre os 150 melhores ilustradores do mundo',
+                    label3: 'Circuito Global', desc3: 'Piracicaba, Santos, Pernambuco, Turquia, China, Marostica 2016'
+                },
+                galeria: 'Galeria',
+                footer: { title: 'Conecte-se', copyright: '© 2024 Junior Lopes - Artista Plástico • Todos os direitos reservados', credits: 'DANIEL A. RUBIO / JUNIOR LOPES / ARTVER' }
+            },
+            en: {
+                nav: { sobre: 'About', exposicoes: 'Exhibitions', premiacoes: 'Awards', galeria: 'Gallery', contato: 'Contact' },
+                hero: { title: 'JUNIOR LOPES', subtitle: 'Contemporary Plastic Artist', desc: 'Fabric as language • Scraps as memory', btn: 'Explore Works' },
+                about: {
+                    title: 'About the Artist',
+                    name: 'Junior Lopes',
+                    p1: 'Junior Lopes is a plastic artist born in Pará and based in São Paulo. For over 15 years, he has developed and mastered a technique that few can replicate: graphic illustration made exclusively with recycled textile scraps from the fashion and apparel industry.',
+                    p2: 'His work is not merely visual — it is a statement. Each collage, each overlay, each cut communicates a question about contemporary waste and affirms Amazonian creativity within the global art dialogue. While many create, Junior questions. While others discard, he transforms.',
+                    p3: 'Denim in his hands gains new life — it carries stories of use and memories of those who wore it. Printed fabrics breathe tropical exuberance. His palette is not pigment or ink, but raw material: fabric, durability, and consciousness.',
+                    p4: 'Recognized in Cannes, published by Taschen among the 150 best illustrators in the world, circulating across continents — Junior demonstrates that true innovation emerges from the periphery and that art created with purpose transforms cultural dialogue.'
+                },
+                stats: {
+                    label1: '15+ Years', desc1: 'Of continuous innovation in graphic illustration technique with recycled fabrics',
+                    label2: '150 Illustrators', desc2: 'Published in "Illustration Now!" Taschen 2015 • Among the world\'s best',
+                    label3: 'Golden Lion', desc3: 'Cannes 2004 • World\'s largest advertising award for Levi\'s Campaign'
+                },
+                expo: {
+                    title: 'International Exhibitions',
+                    title1: 'Terruá Pará', year1: '2013 | São Paulo', desc1: 'Exhibition at Ibirapuera Auditorium presenting innovative technique in contemporary textile art.',
+                    title2: 'Terruá Pará', year2: '2014 | Belém', desc2: 'Institute of Art of Pará celebrating contemporary Amazonian creativity at its origin.',
+                    title3: 'International Exhibition', year3: '2015 | Graphics Magazine', desc3: 'Artist honored with cover and global recognition in specialized publication.',
+                    title4: 'National Circuit', year4: 'Ongoing', desc4: 'São Paulo, Belém, Piracicaba, Porto Alegre, Spain, Mozambique and beyond.'
+                },
+                premios: {
+                    title: 'Awards & Recognition',
+                    label1: 'Golden Lion', desc1: 'Cannes 2004 for Levi\'s Campaign "Cut for you" • World\'s largest advertising award',
+                    label2: 'Taschen', desc2: 'Illustration Now! 2015 • Among the 150 best illustrators worldwide',
+                    label3: 'Global Circuit', desc3: 'Piracicaba, Santos, Pernambuco, Turkey, China, Marostica 2016'
+                },
+                galeria: 'Gallery',
+                footer: { title: 'Connect', copyright: '© 2024 Junior Lopes - Plastic Artist • All rights reserved', credits: 'DANIEL A. RUBIO / JUNIOR LOPES / ARTVER' }
+            },
+            es: {
+                nav: { sobre: 'Acerca de', exposicoes: 'Exposiciones', premiacoes: 'Premios', galeria: 'Galería', contato: 'Contacto' },
+                hero: { title: 'JUNIOR LOPES', subtitle: 'Artista Plástico Contemporáneo', desc: 'Tela como lenguaje • Retazos como memoria', btn: 'Explorar Obras' },
+                about: {
+                    title: 'Acerca del Artista',
+                    name: 'Junior Lopes',
+                    p1: 'Junior Lopes es artista plástico nacido en Pará y establecido en São Paulo. Durante más de 15 años, ha desarrollado y domina una técnica que pocos logran replicar: ilustración gráfica hecha exclusivamente con retazos de tejidos reciclados de la industria de la moda y vestuario.',
+                    p2: 'Su obra no es meramente visual — es una afirmación. Cada collage, cada superposición, cada corte comunica una pregunta sobre el desperdicio contemporáneo y reafirma la creatividad amazónica en el diálogo del arte global. Mientras muchos crean, Junior cuestiona. Mientras otros descartan, él transforma.',
+                    p3: 'El denim en sus manos cobra nueva vida — trae historias de uso y memorias de quienes lo vistieron. Los tejidos estampados respiran exuberancia tropical. Su paleta no es pigmento o tinta, sino materia bruta: tela, durabilidad y consciencia.',
+                    p4: 'Reconocido en Cannes, publicado por Taschen entre los 150 mejores ilustradores del mundo, circulando por continentes — Junior demuestra que la verdadera innovación surge de la periferia y que el arte hecho con propósito transforma el diálogo cultural.'
+                },
+                stats: {
+                    label1: '15+ Años', desc1: 'De innovación continua en técnica de ilustración gráfica con tejidos reciclados',
+                    label2: '150 Ilustradores', desc2: 'Publicado en "Illustration Now!" Taschen 2015 • Entre los mejores del mundo',
+                    label3: 'León de Oro', desc3: 'Cannes 2004 • Mayor premio publicitario mundial por Campaña Levi\'s'
+                },
+                expo: {
+                    title: 'Exposiciones Internacionales',
+                    title1: 'Terruá Pará', year1: '2013 | São Paulo', desc1: 'Exposición en Auditorio Ibirapuera presentando técnica innovadora en arte textil contemporáneo.',
+                    title2: 'Terruá Pará', year2: '2014 | Belém', desc2: 'Instituto de Arte de Pará celebrando creatividad amazónica contemporánea en su origen.',
+                    title3: 'Exposición Internacional', year3: '2015 | Revista Gráfica', desc3: 'Artista honrado con portada y reconocimiento global en publicación especializada.',
+                    title4: 'Circuito Nacional', year4: 'Continuo', desc4: 'São Paulo, Belém, Piracicaba, Porto Alegre, España, Mozambique y más allá.'
+                },
+                premios: {
+                    title: 'Premios & Reconocimiento',
+                    label1: 'León de Oro', desc1: 'Cannes 2004 por Campaña Levi\'s "Cut for you" • Mayor premio publicitario mundial',
+                    label2: 'Taschen', desc2: 'Illustration Now! 2015 • Entre los 150 mejores ilustradores mundiales',
+                    label3: 'Circuito Global', desc3: 'Piracicaba, Santos, Pernambuco, Turquía, China, Marostica 2016'
+                },
+                galeria: 'Galería',
+                footer: { title: 'Conéctate', copyright: '© 2024 Junior Lopes - Artista Plástico • Todos los derechos reservados', credits: 'DANIEL A. RUBIO / JUNIOR LOPES / ARTVER' }
+            },
+            fr: {
+                nav: { sobre: 'À propos', exposicoes: 'Expositions', premiacoes: 'Prix', galeria: 'Galerie', contato: 'Contact' },
+                hero: { title: 'JUNIOR LOPES', subtitle: 'Artiste Plasticien Contemporain', desc: 'Le tissu comme langage • Les restes comme mémoire', btn: 'Explorer les Œuvres' },
+                about: {
+                    title: 'À propos de l\'Artiste',
+                    name: 'Junior Lopes',
+                    p1: 'Junior Lopes est un artiste plasticien né en Pará et basé à São Paulo. Depuis plus de 15 ans, il a développé et maîtrise une technique que peu peuvent reproduire : l\'illustration graphique fabriquée exclusivement avec des restes de tissus recyclés de l\'industrie de la mode et du vêtement.',
+                    p2: 'Son œuvre n\'est pas simplement visuelle — c\'est une affirmation. Chaque collage, chaque superposition, chaque découpe communique une question sur le gaspillage contemporain et réaffirme la créativité amazonienne dans le dialogue de l\'art mondial. Tandis que beaucoup créent, Junior questionne. Tandis que d\'autres jettent, il transforme.',
+                    p3: 'Le denim entre ses mains prend une nouvelle vie — il porte des histoires d\'usage et des mémoires de ceux qui l\'ont porté. Les tissus imprimés respirent l\'exubérance tropicale. Sa palette n\'est pas pigment ou encre, mais matière brute : tissu, durabilité et conscience.',
+                    p4: 'Reconnu à Cannes, publié par Taschen parmi les 150 meilleurs illustrateurs du monde, circulant à travers les continents — Junior démontre que la véritable innovation émane de la périphérie et que l\'art créé avec un objectif transforme le dialogue culturel.'
+                },
+                stats: {
+                    label1: '15+ Ans', desc1: 'D\'innovation continue en technique d\'illustration graphique avec tissus recyclés',
+                    label2: '150 Illustrateurs', desc2: 'Publié dans "Illustration Now!" Taschen 2015 • Parmi les meilleurs du monde',
+                    label3: 'Lion d\'Or', desc3: 'Cannes 2004 • Plus grand prix publicitaire mondial pour la Campagne Levi\'s'
+                },
+                expo: {
+                    title: 'Expositions Internationales',
+                    title1: 'Terruá Pará', year1: '2013 | São Paulo', desc1: 'Exposition à l\'Auditorium Ibirapuera présentant une technique innovante en art textile contemporain.',
+                    title2: 'Terruá Pará', year2: '2014 | Belém', desc2: 'Institut d\'Art du Pará célébrant la créativité amazonienne contemporaine à son origine.',
+                    title3: 'Exposition Internationale', year3: '2015 | Revue Graphique', desc3: 'Artiste honoré avec couverture et reconnaissance mondiale dans publication spécialisée.',
+                    title4: 'Circuit National', year4: 'Continu', desc4: 'São Paulo, Belém, Piracicaba, Porto Alegre, Espagne, Mozambique et au-delà.'
+                },
+                premios: {
+                    title: 'Prix & Reconnaissance',
+                    label1: 'Lion d\'Or', desc1: 'Cannes 2004 pour Campagne Levi\'s "Cut for you" • Plus grand prix publicitaire mondial',
+                    label2: 'Taschen', desc2: 'Illustration Now! 2015 • Parmi les 150 meilleurs illustrateurs du monde',
+                    label3: 'Circuit Mondial', desc3: 'Piracicaba, Santos, Pernambouc, Turquie, Chine, Marostica 2016'
+                },
+                galeria: 'Galerie',
+                footer: { title: 'Connectez-vous', copyright: '© 2024 Junior Lopes - Artiste Plasticien • Tous droits réservés', credits: 'DANIEL A. RUBIO / JUNIOR LOPES / ARTVER' }
+            }
+        };
+
+        let currentLang = 'pt';
+
+        function updateLanguage(lang) {
+            currentLang = lang;
+            const t = translations[lang];
+
+            // Update nav
+            document.querySelector('.nav-sobre').textContent = t.nav.sobre;
+            document.querySelector('.nav-exposicoes').textContent = t.nav.exposicoes;
+            document.querySelector('.nav-premiacoes').textContent = t.nav.premiacoes;
+            document.querySelector('.nav-galeria').textContent = t.nav.galeria;
+            document.querySelector('.nav-contato').textContent = t.nav.contato;
+
+            // Update hero
+            document.querySelector('.hero-title').textContent = t.hero.title;
+            document.querySelector('.hero-subtitle').textContent = t.hero.subtitle;
+            document.querySelector('.hero-desc').textContent = t.hero.desc;
+            document.querySelector('.hero-btn').textContent = t.hero.btn;
+
+            // Update about
+            document.querySelector('.section-title-sobre').textContent = t.about.title;
+            document.querySelector('.artist-name').textContent = t.about.name;
+            document.querySelector('.about-p1').textContent = t.about.p1;
+            document.querySelector('.about-p2').textContent = t.about.p2;
+            document.querySelector('.about-p3').textContent = t.about.p3;
+            document.querySelector('.about-p4').textContent = t.about.p4;
+
+            // Update stats
+            document.querySelector('.stat-label-1').textContent = t.stats.label1;
+            document.querySelector('.stat-desc-1').textContent = t.stats.desc1;
+            document.querySelector('.stat-label-2').textContent = t.stats.label2;
+            document.querySelector('.stat-desc-2').textContent = t.stats.desc2;
+            document.querySelector('.stat-label-3').textContent = t.stats.label3;
+            document.querySelector('.stat-desc-3').textContent = t.stats.desc3;
+
+            // Update expositions
+            document.querySelector('.section-title-exposicoes').textContent = t.expo.title;
+            document.querySelector('.expo-title-1').textContent = t.expo.title1;
+            document.querySelector('.expo-year-1').textContent = t.expo.year1;
+            document.querySelector('.expo-desc-1').textContent = t.expo.desc1;
+            document.querySelector('.expo-title-2').textContent = t.expo.title2;
+            document.querySelector('.expo-year-2').textContent = t.expo.year2;
+            document.querySelector('.expo-desc-2').textContent = t.expo.desc2;
+            document.querySelector('.expo-title-3').textContent = t.expo.title3;
+            document.querySelector('.expo-year-3').textContent = t.expo.year3;
+            document.querySelector('.expo-desc-3').textContent = t.expo.desc3;
+            document.querySelector('.expo-title-4').textContent = t.expo.title4;
+            document.querySelector('.expo-year-4').textContent = t.expo.year4;
+            document.querySelector('.expo-desc-4').textContent = t.expo.desc4;
+
+            // Update premios
+            document.querySelector('.section-title-premiacoes').textContent = t.premios.title;
+            document.querySelector('.premio-label-1').textContent = t.premios.label1;
+            document.querySelector('.premio-desc-1').textContent = t.premios.desc1;
+            document.querySelector('.premio-label-2').textContent = t.premios.label2;
+            document.querySelector('.premio-desc-2').textContent = t.premios.desc2;
+            document.querySelector('.premio-label-3').textContent = t.premios.label3;
+            document.querySelector('.premio-desc-3').textContent = t.premios.desc3;
+
+            // Update gallery
+            document.querySelector('.section-title-galeria').textContent = t.galeria;
+
+            // Update footer
+            document.querySelector('.footer-title').textContent = t.footer.title;
+            document.querySelector('.footer-copyright').textContent = t.footer.copyright;
+            document.querySelector('.footer-credits').textContent = t.footer.credits;
+
+            // Generate QR codes
+            generateQRCodes();
+        }
+
+        function generateQRCodes() {
+            const baseUrl = window.location.origin + window.location.pathname;
+            const urls = {
+                pt: baseUrl.replace('landing-page.html', 'landing-page.html?lang=pt'),
+                en: baseUrl.replace('landing-page.html', 'landing-page.html?lang=en'),
+                es: baseUrl.replace('landing-page.html', 'landing-page.html?lang=es'),
+                fr: baseUrl.replace('landing-page.html', 'landing-page.html?lang=fr')
+            };
+
+            // Clear previous QR codes
+            ['qr-pt', 'qr-en', 'qr-es', 'qr-fr'].forEach(id => {
+                document.getElementById(id).innerHTML = '';
+            });
+
+            new QRCode(document.getElementById('qr-pt'), { text: urls.pt, width: 150, height: 150 });
+            new QRCode(document.getElementById('qr-en'), { text: urls.en, width: 150, height: 150 });
+            new QRCode(document.getElementById('qr-es'), { text: urls.es, width: 150, height: 150 });
+            new QRCode(document.getElementById('qr-fr'), { text: urls.fr, width: 150, height: 150 });
+        }
+
+        // Language switcher
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                updateLanguage(btn.dataset.lang);
+            });
+        });
+
+        // Check URL params
+        const params = new URLSearchParams(window.location.search);
+        const urlLang = params.get('lang');
+        if (urlLang && translations[urlLang]) {
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            document.querySelector(`[data-lang="${urlLang}"]`).classList.add('active');
+            updateLanguage(urlLang);
+        } else {
+            updateLanguage('pt');
+        }
+    </script>
 </body>
 </html>
