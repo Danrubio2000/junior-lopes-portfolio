@@ -1,0 +1,10 @@
+<!-- Abrir landing-page-MULTILINGUAL.html automaticamente -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="refresh" content="0; url=landing-page-MULTILINGUAL.html">
+</head>
+<body>
+    <a href="landing-page-MULTILINGUAL.html">Clique aqui</a>
+</body>
+</html>

@@ -12,10 +12,10 @@
         }
 
         body {
-            font-family: 'Inter', 'Helvetica Neue', sans-serif;
+            font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
             line-height: 1.6;
             color: #1a1a1a;
-            background: #f0f0f0;
+            background: #0a1628;
             overflow-x: hidden;
         }
 
@@ -34,7 +34,7 @@
             background: #0a1628;
             padding: 0.8rem 1.2rem;
             border-radius: 50px;
-            border: 2px solid #FF006E;
+            border: 2px solid #A0826D;
             display: flex;
             gap: 0.8rem;
         }
@@ -54,14 +54,14 @@
         }
 
         .lang-btn:hover {
-            color: #FF006E;
-            border-color: #FF006E;
+            color: #A0826D;
+            border-color: #A0826D;
         }
 
         .lang-btn.active {
-            background: #FF006E;
+            background: #A0826D;
             color: #ffffff;
-            border-color: #FF006E;
+            border-color: #A0826D;
         }
 
         /* ===== QR CODE ===== */
@@ -69,8 +69,8 @@
             background: #0a1628;
             padding: 0.5rem;
             border-radius: 8px;
-            border: 2px solid #FF006E;
-            box-shadow: 0 0 30px rgba(255, 0, 110, 0.3);
+            border: 2px solid #A0826D;
+            box-shadow: 0 0 30px rgba(160, 130, 109, 0.3);
             cursor: pointer;
             transition: all 0.3s;
             display: flex;
@@ -79,8 +79,8 @@
         }
 
         .qr-code-container:hover {
-            border-color: #00FFFF;
-            box-shadow: 0 0 50px rgba(0, 255, 255, 0.4);
+            border-color: #0a1628;
+            box-shadow: 0 0 50px rgba(10, 22, 40, 0.4);
             transform: scale(1.05);
         }
 
@@ -94,7 +94,7 @@
             position: absolute;
             bottom: -35px;
             right: 0;
-            background: #FF006E;
+            background: #A0826D;
             color: white;
             padding: 0.4rem 0.8rem;
             border-radius: 4px;
@@ -123,13 +123,13 @@
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            border-bottom: 3px solid #FF006E;
+            border-bottom: 3px solid #A0826D;
         }
 
         nav .logo {
             font-size: 1.5rem;
             font-weight: 900;
-            color: #FF006E;
+            color: #A0826D;
             letter-spacing: 3px;
             text-transform: uppercase;
         }
@@ -158,7 +158,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: #FF006E;
+            background: #A0826D;
             transition: width 0.3s;
         }
 
@@ -187,7 +187,7 @@
             right: -20%;
             width: 800px;
             height: 800px;
-            background: radial-gradient(circle, rgba(255, 0, 110, 0.15) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(160, 130, 109, 0.15) 0%, transparent 70%);
             border-radius: 50%;
             animation: float 8s ease-in-out infinite;
         }
@@ -199,7 +199,7 @@
             left: -10%;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(0, 255, 255, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(10, 22, 40, 0.1) 0%, transparent 70%);
             border-radius: 50%;
             animation: float-reverse 10s ease-in-out infinite;
         }
@@ -230,14 +230,14 @@
         }
 
         .hero .highlight {
-            color: #FF006E;
+            color: #A0826D;
         }
 
         .hero .tagline {
             font-size: 1.4rem;
             font-weight: 300;
             margin-bottom: 2rem;
-            color: #00FFFF;
+            color: #0a1628;
             letter-spacing: 1px;
         }
 
@@ -250,7 +250,7 @@
 
         .cta-button {
             display: inline-block;
-            background: #FF006E;
+            background: #A0826D;
             color: #ffffff;
             padding: 1.2rem 3rem;
             border: none;
@@ -272,7 +272,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: #00FFFF;
+            background: #0a1628;
             transition: left 0.3s;
             z-index: -1;
         }
@@ -280,7 +280,7 @@
         .cta-button:hover {
             color: #0a1628;
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(255, 0, 110, 0.4);
+            box-shadow: 0 15px 40px rgba(160, 130, 109, 0.4);
         }
 
         .cta-button:hover::before {
@@ -299,7 +299,7 @@
         .shape-container {
             width: 350px;
             height: 350px;
-            background: linear-gradient(135deg, #FF006E 0%, #00FFFF 100%);
+            background: linear-gradient(135deg, #A0826D 0%, #0a1628 100%);
             border-radius: 20px;
             position: relative;
             display: flex;
@@ -308,9 +308,9 @@
             font-size: 3rem;
             font-weight: 900;
             color: #0a1628;
-            box-shadow: 0 20px 60px rgba(255, 0, 110, 0.3);
-            transform: rotate(5deg);
-            animation: pulse-rotate 4s ease-in-out infinite;
+            box-shadow: none;
+            transform: none;
+            animation: none;
         }
 
         @keyframes pulse-rotate {
@@ -342,8 +342,8 @@
             background: linear-gradient(135deg, #0a1628 0%, #1a3a52 100%);
             border-radius: 0;
             position: relative;
-            border: 8px solid #FF006E;
-            box-shadow: -20px 20px 0 #00FFFF;
+            border: 8px solid #A0826D;
+            box-shadow: -20px 20px 0 #0a1628;
             overflow: hidden;
         }
 
@@ -363,7 +363,7 @@
         }
 
         .about-text h2 .color {
-            color: #FF006E;
+            color: #A0826D;
         }
 
         .about-text p {
@@ -381,14 +381,14 @@
         }
 
         .stat {
-            border-left: 4px solid #FF006E;
+            border-left: 4px solid #A0826D;
             padding-left: 1.5rem;
         }
 
         .stat-number {
             font-size: 2.5rem;
             font-weight: 900;
-            color: #FF006E;
+            color: #A0826D;
         }
 
         .stat-label {
@@ -415,7 +415,7 @@
         }
 
         .section-title .highlight {
-            color: #FF006E;
+            color: #A0826D;
         }
 
         .expositions-grid {
@@ -427,8 +427,8 @@
         }
 
         .exposition-card {
-            background: rgba(255, 0, 110, 0.1);
-            border: 2px solid #FF006E;
+            background: rgba(160, 130, 109, 0.1);
+            border: 2px solid #A0826D;
             padding: 2.5rem;
             transition: all 0.3s;
             border-radius: 8px;
@@ -443,7 +443,7 @@
             right: -50%;
             width: 200px;
             height: 200px;
-            background: rgba(0, 255, 255, 0.1);
+            background: rgba(10, 22, 40, 0.1);
             border-radius: 50%;
         }
 
@@ -453,7 +453,7 @@
         }
 
         .exposition-card h3 {
-            color: #00FFFF;
+            color: #0a1628;
             margin-bottom: 0.8rem;
             font-size: 1.3rem;
             text-transform: uppercase;
@@ -461,7 +461,7 @@
         }
 
         .exposition-card .year {
-            color: #FF006E;
+            color: #A0826D;
             font-weight: 900;
             margin-bottom: 1rem;
             font-size: 1.1rem;
@@ -475,8 +475,8 @@
 
         .exposition-card:hover {
             transform: translateY(-10px);
-            border-color: #00FFFF;
-            box-shadow: 0 20px 40px rgba(255, 0, 110, 0.3);
+            border-color: #0a1628;
+            box-shadow: 0 20px 40px rgba(160, 130, 109, 0.3);
         }
 
         /* ===== AWARDS ===== */
@@ -497,7 +497,7 @@
             background: #f5f5f5;
             padding: 2.5rem;
             border-radius: 0;
-            border-top: 6px solid #FF006E;
+            border-top: 6px solid #A0826D;
             transition: all 0.3s;
             position: relative;
         }
@@ -509,7 +509,7 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: #00FFFF;
+            background: #0a1628;
             transform: scaleX(0);
             transform-origin: left;
             transition: transform 0.3s;
@@ -520,7 +520,7 @@
         }
 
         .award-item h4 {
-            color: #FF006E;
+            color: #A0826D;
             margin-bottom: 1rem;
             font-size: 1.2rem;
             text-transform: uppercase;
@@ -560,7 +560,7 @@
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             position: relative;
-            border: 6px solid #FF006E;
+            border: 6px solid #A0826D;
             border-radius: 12px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
         }
@@ -574,8 +574,8 @@
 
         .portfolio-item:hover {
             transform: scale(1.12) rotate(-2deg);
-            box-shadow: 0 30px 70px rgba(255, 0, 110, 0.5), 0 0 60px rgba(0, 255, 255, 0.2);
-            border-color: #00FFFF;
+            box-shadow: 0 30px 70px rgba(160, 130, 109, 0.5), 0 0 60px rgba(10, 22, 40, 0.2);
+            border-color: #0a1628;
         }
 
         .portfolio-item:hover img {
@@ -588,7 +588,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(255, 0, 110, 0.85) 0%, rgba(0, 255, 255, 0.85) 100%);
+            background: linear-gradient(135deg, rgba(160, 130, 109, 0.85) 0%, rgba(10, 22, 40, 0.85) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -635,12 +635,12 @@
         }
 
         .lightbox-image {
-            width: 100%;
-            height: 100%;
+            max-width: 85%;
+            max-height: 85%;
             object-fit: contain;
-            border: 8px solid #FF006E;
+            border: 4px solid #A0826D;
             border-radius: 12px;
-            box-shadow: 0 0 100px rgba(255, 0, 110, 0.6);
+            box-shadow: 0 0 60px rgba(160, 130, 109, 0.3);
         }
 
         .lightbox-close {
@@ -648,7 +648,7 @@
             top: 20px;
             right: 30px;
             font-size: 3rem;
-            color: #FF006E;
+            color: #A0826D;
             cursor: pointer;
             font-weight: bold;
             transition: all 0.3s;
@@ -659,12 +659,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 3px solid #FF006E;
+            border: 3px solid #A0826D;
         }
 
         .lightbox-close:hover {
-            color: #00FFFF;
-            border-color: #00FFFF;
+            color: #0a1628;
+            border-color: #0a1628;
             transform: scale(1.1);
         }
 
@@ -673,12 +673,12 @@
             top: 50%;
             transform: translateY(-50%);
             font-size: 2.5rem;
-            color: #FF006E;
+            color: #A0826D;
             cursor: pointer;
             background: rgba(0, 0, 0, 0.7);
             padding: 1rem 1.5rem;
             border-radius: 8px;
-            border: 2px solid #FF006E;
+            border: 2px solid #A0826D;
             transition: all 0.3s;
             user-select: none;
         }
@@ -692,8 +692,8 @@
         }
 
         .lightbox-prev:hover, .lightbox-next:hover {
-            color: #00FFFF;
-            border-color: #00FFFF;
+            color: #0a1628;
+            border-color: #0a1628;
             background: rgba(0, 0, 0, 0.9);
         }
 
@@ -702,13 +702,13 @@
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            color: #FF006E;
+            color: #A0826D;
             font-weight: bold;
             font-size: 1.2rem;
             background: rgba(0, 0, 0, 0.8);
             padding: 0.8rem 1.5rem;
             border-radius: 50px;
-            border: 2px solid #FF006E;
+            border: 2px solid #A0826D;
         }
 
         /* ===== FOOTER ===== */
@@ -717,7 +717,7 @@
             color: #ffffff;
             padding: 4rem 5%;
             text-align: center;
-            border-top: 3px solid #FF006E;
+            border-top: 3px solid #A0826D;
         }
 
         footer h3 {
@@ -729,7 +729,7 @@
         }
 
         footer h3 .color {
-            color: #FF006E;
+            color: #A0826D;
         }
 
         .social-links {
@@ -740,7 +740,7 @@
         }
 
         .social-links a {
-            color: #00FFFF;
+            color: #0a1628;
             text-decoration: none;
             font-weight: 900;
             text-transform: uppercase;
@@ -750,7 +750,7 @@
         }
 
         .social-links a:hover {
-            color: #FF006E;
+            color: #A0826D;
             transform: scale(1.1);
         }
 
@@ -860,8 +860,8 @@
             background: #000;
             border-radius: 8px;
             overflow: hidden;
-            border: 6px solid #FF006E;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2), 0 0 60px rgba(255, 0, 110, 0.3);
+            border: 6px solid #A0826D;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2), 0 0 60px rgba(160, 130, 109, 0.3);
             position: relative;
         }
 
@@ -882,7 +882,7 @@
             }
 
             .video-container {
-                border: 4px solid #FF006E;
+                border: 4px solid #A0826D;
             }
         }
     </style>
@@ -918,12 +918,27 @@
     <section class="hero">
         <div class="hero-content">
             <h1><span class="highlight">JUNIOR</span><br>LOPES</h1>
-            <p class="tagline hero-tagline">TEXTILE ARTIST • SOHO NYC</p>
+            <p class="tagline hero-tagline">TEXTILE ARTIST</p>
             <p class="hero-desc">Fabric as language. Scraps as memory. Textile collages that dialogue with contemporary mass culture through sustainability and critical visual practice.</p>
             <button class="cta-button hero-btn">EXPLORE WORKS</button>
         </div>
         <div class="hero-visual">
-            <div class="shape-container">JL</div>
+            <div class="shape-container">
+                <svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Vespa simples -->
+                    <ellipse cx="150" cy="120" rx="35" ry="50" fill="#1a1a1a"/>
+                    <circle cx="150" cy="70" r="25" fill="#1a1a1a"/>
+                    <!-- Abdômen -->
+                    <ellipse cx="150" cy="180" rx="30" ry="60" fill="#1a1a1a"/>
+                    <!-- Asas -->
+                    <ellipse cx="110" cy="130" rx="20" ry="50" fill="none" stroke="#A0826D" stroke-width="2" opacity="0.7"/>
+                    <ellipse cx="190" cy="130" rx="20" ry="50" fill="none" stroke="#A0826D" stroke-width="2" opacity="0.7"/>
+                    <!-- Patas -->
+                    <line x1="130" y1="160" x2="110" y2="200" stroke="#1a1a1a" stroke-width="2"/>
+                    <line x1="150" y1="165" x2="150" y2="210" stroke="#1a1a1a" stroke-width="2"/>
+                    <line x1="170" y1="160" x2="190" y2="200" stroke="#1a1a1a" stroke-width="2"/>
+                </svg>
+            </div>
         </div>
     </section>
 
@@ -969,7 +984,7 @@
 
     <!-- EXPOSITIONS -->
     <section id="expositions" class="expositions">
-        <h2 class="section-title">International <span class="highlight">Exhibitions</span></h2>
+        <h2 class="section-title">INTERNATIONAL <span class="highlight">/</span> EXHIBITION</h2>
         <div class="expositions-grid">
             <div class="exposition-card">
                 <div class="exposition-card-content">
@@ -1004,7 +1019,7 @@
 
     <!-- AWARDS -->
     <section id="awards" class="awards">
-        <h2 class="section-title">Awards & <span class="highlight">Recognition</span></h2>
+        <h2 class="section-title">AWARD <span class="highlight">/</span> RECOGNITION</h2>
         <div class="awards-grid">
             <div class="award-item">
                 <h4 class="award-title-1">🏆 Gold Lion</h4>
@@ -1023,7 +1038,7 @@
 
     <!-- PORTFOLIO -->
     <section id="portfolio" class="portfolio">
-        <h2 class="section-title">Visual <span class="highlight">Portfolio</span></h2>
+        <h2 class="section-title">OBRAS <span class="highlight">/</span> DO ARTISTA</h2>
         <div class="portfolio-grid" id="portfolioGrid">
             <div class="portfolio-item" data-index="0">
                 <img src="images/reorganized/obra_1.jpeg" alt="Obra 1">
@@ -1108,7 +1123,7 @@
             <a href="https://wa.me/5511994494532" target="_blank">💬 WhatsApp</a>
         </div>
         <p>&copy; 2024 JUNIOR LOPES - Contemporary Textile Artist</p>
-        <p style="font-size: 0.9rem; color: #FF006E; font-weight: bold; margin: 1rem 0;">DANIEL A. RUBIO / JUNIOR LOPES / ARTVER</p>
+        <p style="font-size: 0.9rem; color: #A0826D; font-weight: bold; margin: 1rem 0;">DANIEL A. RUBIO / JUNIOR LOPES / ARTVER</p>
         <p class="footer-text">NYC • SÃO PAULO • AMAZONIA • GLOBAL</p>
     </footer>
 
